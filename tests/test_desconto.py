@@ -39,6 +39,10 @@ CASOS = [
     ("C34", 123.45, "VIP", 18.52),
     ("C35", 999, "COMUM", 199.80),
     ("C36", 799, "VIP", 199.75),
+    ("C37", 300, " VIP ", 45.00),
+    ("C38", 50, " vip ", 2.50),
+    ("C39", 300, " COMUM ", 30.00),
+    ("C40", 500, "CoMuM", 100.00),
 ]
 
 
@@ -47,3 +51,39 @@ def test_criterios_de_aceite(calcular_desconto, cenario, valor_compra, tipo_clie
     resultado = calcular_desconto(valor_compra, tipo_cliente)
     assert resultado == esperado, f"{cenario}: esperado {esperado:.2f}, recebido {resultado:.2f}"
     assert 0 <= resultado <= 200
+
+
+# Validacoes adicionais adotadas para dados inesperados.
+CASOS_INVALIDOS = [
+    ("I01", -0.01, "COMUM", ValueError, "valor_compra deve ser nao negativo"),
+    ("I02", -100, "VIP", ValueError, "valor_compra deve ser nao negativo"),
+    ("I03", None, "COMUM", TypeError, "valor_compra deve ser int ou float"),
+    ("I04", "300", "COMUM", TypeError, "valor_compra deve ser int ou float"),
+    ("I05", "abc", "COMUM", TypeError, "valor_compra deve ser int ou float"),
+    ("I06", True, "COMUM", TypeError, "valor_compra deve ser int ou float"),
+    ("I07", False, "VIP", TypeError, "valor_compra deve ser int ou float"),
+    ("I08", float("nan"), "COMUM", ValueError, "valor_compra deve ser finito"),
+    ("I09", float("inf"), "VIP", ValueError, "valor_compra deve ser finito"),
+    ("I10", float("-inf"), "COMUM", ValueError, "valor_compra deve ser finito"),
+    ("I11", [], "COMUM", TypeError, "valor_compra deve ser int ou float"),
+    ("I12", {}, "COMUM", TypeError, "valor_compra deve ser int ou float"),
+    ("I13", 300 + 1j, "COMUM", TypeError, "valor_compra deve ser int ou float"),
+    ("I14", 300, None, TypeError, "tipo_cliente deve ser texto"),
+    ("I15", 300, 123, TypeError, "tipo_cliente deve ser texto"),
+    ("I16", 300, True, TypeError, "tipo_cliente deve ser texto"),
+    ("I17", 300, [], TypeError, "tipo_cliente deve ser texto"),
+    ("I18", 300, {}, TypeError, "tipo_cliente deve ser texto"),
+    ("I19", 300, "", ValueError, "tipo_cliente deve ser COMUM ou VIP"),
+    ("I20", 300, "   ", ValueError, "tipo_cliente deve ser COMUM ou VIP"),
+    ("I21", 300, "PREMIUM", ValueError, "tipo_cliente deve ser COMUM ou VIP"),
+]
+
+
+@pytest.mark.parametrize(
+    "cenario,valor_compra,tipo_cliente,erro,mensagem",
+    CASOS_INVALIDOS,
+    ids=[caso[0] for caso in CASOS_INVALIDOS],
+)
+def test_dados_inesperados(calcular_desconto, cenario, valor_compra, tipo_cliente, erro, mensagem):
+    with pytest.raises(erro, match=mensagem):
+        calcular_desconto(valor_compra, tipo_cliente)

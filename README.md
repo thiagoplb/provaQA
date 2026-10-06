@@ -1,41 +1,19 @@
 # Auditoria de descontos — Tech UniDiasUp
 
-Projeto Python/Pytest que verifica os cinco criterios de aceite da historia de usuario.
-A funcao retorna o desconto em reais, e nao o total da compra apos desconto.
+Entrega: [thiagoplb/provaQA](https://github.com/thiagoplb/provaQA).
 
-## Resultado da auditoria
+A função retorna o desconto em reais. A mesma suíte de 61 testes roda no código original e no corrigido: **30 falhas e 31 sucessos antes; 61 sucessos depois**.
 
-- Codigo original: **7 falhas e 29 sucessos**.
-- Codigo corrigido: **36 sucessos**.
-- Bug 1: `valor_compra > 100` excluia o limite de R$ 100. Corrigido para `100 <= valor_compra < 500`.
-- Bug 2: a comparacao literal com `VIP` ignorava `vip`, `Vip` e `vIp`. Corrigido com `tipo_cliente.upper()`.
-- A faixa de 20%, o adicional de 5 pontos percentuais e o teto de R$ 200 ja estavam corretos.
+## Preencher o formulário
 
-Veja a tabela completa em [CENARIOS.md](CENARIOS.md).
+- Código corrigido: copie [desconto.py](desconto.py).
+- Todos os cenários: copie [CENARIOS_RESUMIDOS.txt](CENARIOS_RESUMIDOS.txt), com os 40 cenários de desconto e os 21 de dados inesperados efetivamente testados.
+- Bugs e escolha dos valores: copie [BUGS_ENCONTRADOS.txt](BUGS_ENCONTRADOS.txt).
+- PRINT1: anexe [PRINT1.png](evidencias/PRINT1.png).
+- PRINT2: anexe [PRINT2.png](evidencias/PRINT2.png).
+- Link do GitHub: `https://github.com/thiagoplb/provaQA`.
 
-Antes da correcao:
-
-![PRINT1 — 7 falhas e 29 sucessos](evidencias/PRINT1.png)
-
-Depois da correcao:
-
-![PRINT2 — 36 sucessos](evidencias/PRINT2.png)
-
-## Arquivos
-
-- `desconto.py`: funcao corrigida.
-- `desconto_original.py`: logica original preservada para reproduzir as falhas.
-- `tests/test_desconto.py`: 36 cenarios com resultados esperados fixos.
-- `CENARIOS.md`: entradas e resultados esperados de todos os cenarios.
-- `CENARIOS_RESUMIDOS.txt`: uma linha por cenario para copiar no formulario, com dados inesperados levantados para refinamento separados dos testes executados.
-- `evidencias/PRINT1.png`: captura no navegador do log real da execucao original.
-- `evidencias/PRINT2.png`: captura no navegador do log real da execucao corrigida.
-- `evidencias/PRINT1.txt` e `PRINT2.txt`: saidas completas do Pytest.
-- `evidencias/execucoes.json`: comandos, codigos de saida e hashes dos logs.
-
-Os PNGs sao capturas das paginas HTML que exibem as saidas reais salvas pelo Pytest; nao sao fotografias de uma janela de terminal.
-
-## Executar
+## Executar os testes
 
 ```powershell
 python -m pip install -r requirements.txt
@@ -43,32 +21,18 @@ python -m pytest -p no:cacheprovider -v
 python -m pytest -p no:cacheprovider -v --implementacao original
 ```
 
-A execucao original deve falhar: os mesmos testes e os mesmos valores esperados sao usados nas duas versoes.
-O cache do Pytest e desativado nesses comandos para evitar arquivos temporarios; isso nao altera os testes.
+A última execução deve falhar: usa os mesmos cenários e resultados esperados no código original preservado em `desconto_original.py`.
 
-Para regenerar os logs e os prints no Windows com Microsoft Edge instalado:
+## Dados inesperados
 
-```powershell
-python registrar_evidencias.py
-```
+Como os critérios originais não definiam esses casos, foram adotadas regras adicionais: compras devem ser `int` ou `float`, finitas e não negativas; booleanos e conversão automática de texto são rejeitados. Categorias devem ser texto, COMUM ou VIP, ignorando maiúsculas e espaços nas extremidades. Tipos inválidos geram `TypeError`; valores inválidos geram `ValueError`. Os testes verificam a exceção e a mensagem.
 
-## Escopo
+O arredondamento `round(..., 2)` original foi mantido.
 
-Cobertura: valores zero e abaixo de R$ 100, limites imediatamente antes/no/depois de R$ 100 e R$ 500, clientes comuns e VIP, variacoes de capitalizacao, teto antes/no/depois dos limites de compra de R$ 800 (VIP) e R$ 1000 (COMUM), compras altas e arredondamento a duas casas.
-Os valores de R$ 799 e R$ 999 distinguem descontos abaixo do teto dos valores que arredondam para R$ 200.
-Entradas negativas, tipos invalidos, categorias desconhecidas, espacos e criterios especiais de arredondamento nao foram definidos pelo PO; os testes nao inventam regras para esses casos.
-Foi preservado o arredondamento com `round(valor_desconto, 2)` do codigo original.
+## Evidências
 
-## Publicacao no GitHub
+Os PNGs são capturas no navegador das saídas reais do Pytest. As páginas HTML usadas na captura são temporárias e não fazem parte da entrega.
 
-Repositorio: [thiagoplb/provaQA](https://github.com/thiagoplb/provaQA), branch `main`.
+![Antes: 30 falhas e 31 sucessos](evidencias/PRINT1.png)
 
-Para publicar novas alteracoes depois de criar um commit local:
-
-```powershell
-git push origin main
-```
-
-## Texto para a entrega
-
-Foram elaborados 36 testes unitarios automatizados usando Pytest, cobrindo as faixas de desconto, valores limite, adicional VIP sem diferenciar maiusculas e minusculas, teto de R$ 200 e arredondamento. A primeira execucao apresentou 7 falhas e 29 sucessos. Foram identificados dois bugs: exclusao de compras de exatamente R$ 100 da faixa de 10% e reconhecimento de VIP somente em maiusculas. Depois das correcoes, os mesmos 36 testes passaram. As evidencias anteriores e posteriores estao em PRINT1 e PRINT2.
+![Depois: 61 sucessos](evidencias/PRINT2.png)

@@ -1,0 +1,26 @@
+BUGS E ESCOLHA DOS VALORES DE TESTE
+
+1. Limite de R$ 100 excluído da faixa de 10%.
+O código original usava valor_compra > 100. Uma compra de exatamente R$ 100 recebia R$ 0 de desconto para COMUM e R$ 5 para VIP, em vez de R$ 10 e R$ 15. A condição foi corrigida para 100 <= valor_compra < 500.
+Os testes com R$ 99,99, R$ 100,00 e R$ 100,01, para ambas as categorias, verificam a transição da faixa e revelam esse erro de limite.
+
+2. VIP reconhecido apenas em letras maiúsculas.
+A comparação literal com "VIP" ignorava "vip", "Vip" e "vIp". R$ 300 com "vip" recebia R$ 30, em vez de R$ 45. A categoria passou a ser normalizada para maiúsculas. Testar variações de escrita abaixo de R$ 100, na faixa de 10% e na faixa de 20% confirma o adicional em todas as faixas.
+
+3. Ausência de validação para dados inesperados.
+Os critérios originais não definiam esses dados. Para os testes de robustez, foi adotada uma política explícita: aceitar somente compras int/float, finitas e não negativas, rejeitar booleanos e não converter textos automaticamente; aceitar somente COMUM e VIP em texto, normalizando maiúsculas e espaços nas extremidades.
+O código original podia retornar desconto negativo para compra negativa VIP, aceitar booleanos como números, propagar NaN e tratar categorias ausentes ou desconhecidas como comuns. Algumas entradas já provocavam TypeError incidental, mas sem validação explícita nem a mensagem definida pela política. Os testes verificam a classe da exceção e a mensagem correspondente.
+Foram testados valores negativos, None, textos numéricos e não numéricos, True/False, NaN, infinito positivo e negativo, listas, dicionários, número complexo, categoria vazia, só espaços e categoria desconhecida.
+Essas validações são decisões adicionais de robustez, não regras originalmente descritas pelo PO.
+
+4. Espaços nas extremidades da categoria.
+Pela política adicional adotada, " VIP " e " vip " devem receber o adicional VIP. O código original ignorava esse adicional. A normalização com strip().upper() corrige o comportamento e há testes automatizados específicos. Também foram testados " COMUM " e "CoMuM".
+
+5. Regras verificadas que já estavam corretas.
+R$ 499,99, R$ 500,00 e R$ 500,01 verificam a transição para 20%. R$ 800 para VIP e R$ 1.000 para COMUM atingem exatamente o teto; valores um centavo abaixo e acima verificam as proximidades. R$ 799 (VIP) e R$ 999 (COMUM) geram descontos efetivamente inferiores ao teto, evitando que o arredondamento esconda diferenças. R$ 5.000 verifica a limitação nas duas categorias. R$ 123,45 verifica duas casas decimais. Compra zero e R$ 50 verificam ausência de desconto base e adicional VIP independente da faixa.
+
+RESULTADO
+A mesma suíte contém 61 testes: 40 cenários de desconto e 21 de dados inesperados.
+Código original: 30 falhas e 31 sucessos.
+Código corrigido: 61 sucessos.
+As 30 falhas incluem as 7 dos critérios originais, 2 por espaços na categoria VIP e 21 pela política adicional de validação.

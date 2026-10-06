@@ -1,55 +1,73 @@
-CENÁRIOS EXECUTADOS — DESCONTO EM REAIS
-Cada linha informa a compra, o tipo de cliente e o desconto esperado.
+﻿CENÁRIOS DE TESTES — DESCONTO EM REAIS
+Todos os 61 cenários abaixo integram os testes automatizados: 40 de desconto e 21 de dados inesperados.
+Os valores esperados são o desconto, não o total final da compra.
 
-C01: Compra R$ 0,00, COMUM → desconto R$ 0,00.
-C02: Compra R$ 0,00, VIP → desconto R$ 0,00.
-C03: Compra R$ 50,00, COMUM → desconto R$ 0,00.
-C04: Compra R$ 50,00, VIP → desconto R$ 2,50.
-C05: Compra R$ 99,99, COMUM → desconto R$ 0,00.
-C06: Compra R$ 99,99, VIP → desconto R$ 5,00.
-C07: Compra R$ 100,00, COMUM → desconto R$ 10,00.
-C08: Compra R$ 100,00, VIP → desconto R$ 15,00.
-C09: Compra R$ 100,01, COMUM → desconto R$ 10,00.
-C10: Compra R$ 100,01, VIP → desconto R$ 15,00.
-C11: Compra R$ 300,00, COMUM → desconto R$ 30,00.
-C12: Compra R$ 300,00, VIP → desconto R$ 45,00.
-C13: Compra R$ 499,99, COMUM → desconto R$ 50,00.
-C14: Compra R$ 499,99, VIP → desconto R$ 75,00.
-C15: Compra R$ 500,00, COMUM → desconto R$ 100,00.
-C16: Compra R$ 500,00, VIP → desconto R$ 125,00.
-C17: Compra R$ 500,01, COMUM → desconto R$ 100,00.
-C18: Compra R$ 500,01, VIP → desconto R$ 125,00.
-C19: Compra R$ 50,00, "vip" → desconto R$ 2,50.
-C20: Compra R$ 300,00, "vip" → desconto R$ 45,00.
-C21: Compra R$ 500,00, "vip" → desconto R$ 125,00.
-C22: Compra R$ 300,00, "Vip" → desconto R$ 45,00.
-C23: Compra R$ 300,00, "vIp" → desconto R$ 45,00.
-C24: Compra R$ 300,00, "comum" → desconto R$ 30,00.
-C25: Compra R$ 999,99, COMUM → desconto R$ 200,00 após arredondamento.
-C26: Compra R$ 1.000,00, COMUM → desconto R$ 200,00, exatamente no teto.
-C27: Compra R$ 1.000,01, COMUM → desconto limitado a R$ 200,00.
-C28: Compra R$ 799,99, VIP → desconto R$ 200,00 após arredondamento.
-C29: Compra R$ 800,00, VIP → desconto R$ 200,00, exatamente no teto.
-C30: Compra R$ 800,01, VIP → desconto limitado a R$ 200,00.
-C31: Compra R$ 5.000,00, COMUM → desconto limitado a R$ 200,00.
-C32: Compra R$ 5.000,00, VIP → desconto limitado a R$ 200,00.
-C33: Compra R$ 123,45, COMUM → desconto R$ 12,35, com duas casas decimais.
-C34: Compra R$ 123,45, VIP → desconto R$ 18,52, com duas casas decimais.
-C35: Compra R$ 999,00, COMUM → desconto R$ 199,80, abaixo do teto.
-C36: Compra R$ 799,00, VIP → desconto R$ 199,75, abaixo do teto.
+COMPRAS E CATEGORIAS
+C01: Compra R$ 0,00, cliente 'COMUM' -> desconto R$ 0,00.
+C02: Compra R$ 0,00, cliente 'VIP' -> desconto R$ 0,00.
+C03: Compra R$ 50,00, cliente 'COMUM' -> desconto R$ 0,00.
+C04: Compra R$ 50,00, cliente 'VIP' -> desconto R$ 2,50.
+C05: Compra R$ 99,99, cliente 'COMUM' -> desconto R$ 0,00.
+C06: Compra R$ 99,99, cliente 'VIP' -> desconto R$ 5,00.
+C07: Compra R$ 100,00, cliente 'COMUM' -> desconto R$ 10,00.
+C08: Compra R$ 100,00, cliente 'VIP' -> desconto R$ 15,00.
+C09: Compra R$ 100,01, cliente 'COMUM' -> desconto R$ 10,00.
+C10: Compra R$ 100,01, cliente 'VIP' -> desconto R$ 15,00.
+C11: Compra R$ 300,00, cliente 'COMUM' -> desconto R$ 30,00.
+C12: Compra R$ 300,00, cliente 'VIP' -> desconto R$ 45,00.
+C13: Compra R$ 499,99, cliente 'COMUM' -> desconto R$ 50,00.
+C14: Compra R$ 499,99, cliente 'VIP' -> desconto R$ 75,00.
+C15: Compra R$ 500,00, cliente 'COMUM' -> desconto R$ 100,00.
+C16: Compra R$ 500,00, cliente 'VIP' -> desconto R$ 125,00.
+C17: Compra R$ 500,01, cliente 'COMUM' -> desconto R$ 100,00.
+C18: Compra R$ 500,01, cliente 'VIP' -> desconto R$ 125,00.
+C19: Compra R$ 50,00, cliente 'vip' -> desconto R$ 2,50.
+C20: Compra R$ 300,00, cliente 'vip' -> desconto R$ 45,00.
+C21: Compra R$ 500,00, cliente 'vip' -> desconto R$ 125,00.
+C22: Compra R$ 300,00, cliente 'Vip' -> desconto R$ 45,00.
+C23: Compra R$ 300,00, cliente 'vIp' -> desconto R$ 45,00.
+C24: Compra R$ 300,00, cliente 'comum' -> desconto R$ 30,00.
+C25: Compra R$ 999,99, cliente 'COMUM' -> desconto R$ 200,00.
+C26: Compra R$ 1.000,00, cliente 'COMUM' -> desconto R$ 200,00.
+C27: Compra R$ 1.000,01, cliente 'COMUM' -> desconto R$ 200,00.
+C28: Compra R$ 799,99, cliente 'VIP' -> desconto R$ 200,00.
+C29: Compra R$ 800,00, cliente 'VIP' -> desconto R$ 200,00.
+C30: Compra R$ 800,01, cliente 'VIP' -> desconto R$ 200,00.
+C31: Compra R$ 5.000,00, cliente 'COMUM' -> desconto R$ 200,00.
+C32: Compra R$ 5.000,00, cliente 'VIP' -> desconto R$ 200,00.
+C33: Compra R$ 123,45, cliente 'COMUM' -> desconto R$ 12,35.
+C34: Compra R$ 123,45, cliente 'VIP' -> desconto R$ 18,52.
+C35: Compra R$ 999,00, cliente 'COMUM' -> desconto R$ 199,80.
+C36: Compra R$ 799,00, cliente 'VIP' -> desconto R$ 199,75.
+C37: Compra R$ 300,00, cliente ' VIP ' -> desconto R$ 45,00.
+C38: Compra R$ 50,00, cliente ' vip ' -> desconto R$ 2,50.
+C39: Compra R$ 300,00, cliente ' COMUM ' -> desconto R$ 30,00.
+C40: Compra R$ 500,00, cliente 'CoMuM' -> desconto R$ 100,00.
 
-Resultado: antes da correção, 7 falhas e 29 sucessos; depois, 36 sucessos.
+DADOS INESPERADOS — TESTES AUTOMATIZADOS DE VALIDAÇÃO
+I01: Compra -0.01, cliente 'COMUM' -> ValueError: "valor_compra deve ser nao negativo".
+I02: Compra -100, cliente 'VIP' -> ValueError: "valor_compra deve ser nao negativo".
+I03: Compra None, cliente 'COMUM' -> TypeError: "valor_compra deve ser int ou float".
+I04: Compra '300', cliente 'COMUM' -> TypeError: "valor_compra deve ser int ou float".
+I05: Compra 'abc', cliente 'COMUM' -> TypeError: "valor_compra deve ser int ou float".
+I06: Compra True, cliente 'COMUM' -> TypeError: "valor_compra deve ser int ou float".
+I07: Compra False, cliente 'VIP' -> TypeError: "valor_compra deve ser int ou float".
+I08: Compra nan, cliente 'COMUM' -> ValueError: "valor_compra deve ser finito".
+I09: Compra inf, cliente 'VIP' -> ValueError: "valor_compra deve ser finito".
+I10: Compra -inf, cliente 'COMUM' -> ValueError: "valor_compra deve ser finito".
+I11: Compra [], cliente 'COMUM' -> TypeError: "valor_compra deve ser int ou float".
+I12: Compra {}, cliente 'COMUM' -> TypeError: "valor_compra deve ser int ou float".
+I13: Compra (300+1j), cliente 'COMUM' -> TypeError: "valor_compra deve ser int ou float".
+I14: Compra 300, cliente None -> TypeError: "tipo_cliente deve ser texto".
+I15: Compra 300, cliente 123 -> TypeError: "tipo_cliente deve ser texto".
+I16: Compra 300, cliente True -> TypeError: "tipo_cliente deve ser texto".
+I17: Compra 300, cliente [] -> TypeError: "tipo_cliente deve ser texto".
+I18: Compra 300, cliente {} -> TypeError: "tipo_cliente deve ser texto".
+I19: Compra 300, cliente '' -> ValueError: "tipo_cliente deve ser COMUM ou VIP".
+I20: Compra 300, cliente '   ' -> ValueError: "tipo_cliente deve ser COMUM ou VIP".
+I21: Compra 300, cliente 'PREMIUM' -> ValueError: "tipo_cliente deve ser COMUM ou VIP".
 
-DADOS INESPERADOS IDENTIFICADOS PARA REFINAMENTO COM O PO
-Estes casos foram levantados, mas NÃO integram os 36 testes executados.
-A história não define o resultado esperado; é necessário acordar a regra antes de automatizar testes de aceite para eles.
-
-I01: Valor de compra negativo, por exemplo -R$ 100,00; definir se deve ser rejeitado.
-I02: Valor de compra ausente (None); definir a validação e o erro esperado.
-I03: Valor de compra como texto ("300" ou "abc"); definir se haverá conversão ou rejeição.
-I04: Valor de compra booleano, NaN ou infinito; definir os tipos e valores aceitos.
-I05: Tipo de cliente ausente, numérico ou vazio; definir a validação e o erro esperado.
-I06: Categoria desconhecida, por exemplo "PREMIUM"; definir se será rejeitada ou tratada como COMUM.
-I07: Tipo de cliente com espaços, por exemplo " VIP "; definir se os espaços serão removidos.
-
-Observação: o desconto retornado não é o valor final da compra. Os testes mantêm o arredondamento round(..., 2) do código original.
+Política adicional adotada: compra deve ser int ou float, finita e não negativa; booleanos são rejeitados. Não há conversão automática de texto para número. Cliente deve ser texto, COMUM ou VIP, ignorando maiúsculas e espaços nas extremidades. Tipos inválidos geram TypeError; valores inválidos geram ValueError.
+Essas decisões complementam os critérios originais, que não especificavam validação de entradas.
+Preservado round(..., 2). R$ 999,99 (COMUM) e R$ 799,99 (VIP) arredondam para desconto de R$ 200,00; C35 e C36 verificam descontos realmente abaixo do teto.
+Antes: 30 falhas e 31 sucessos. Depois: 61 sucessos.
