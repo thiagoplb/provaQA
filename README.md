@@ -27,6 +27,7 @@ Depois da correcao:
 - `desconto_original.py`: logica original preservada para reproduzir as falhas.
 - `tests/test_desconto.py`: 36 cenarios com resultados esperados fixos.
 - `CENARIOS.md`: entradas e resultados esperados de todos os cenarios.
+- `CENARIOS_RESUMIDOS.txt`: uma linha por cenario para copiar no formulario, com dados inesperados levantados para refinamento separados dos testes executados.
 - `evidencias/PRINT1.png`: captura no navegador do log real da execucao original.
 - `evidencias/PRINT2.png`: captura no navegador do log real da execucao corrigida.
 - `evidencias/PRINT1.txt` e `PRINT2.txt`: saidas completas do Pytest.
