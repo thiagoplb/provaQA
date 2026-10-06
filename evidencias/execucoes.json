@@ -1,0 +1,39 @@
+{
+  "data_utc": "2026-10-06T22:58:06.070954+00:00",
+  "execucoes": [
+    {
+      "implementacao": "original",
+      "comando": [
+        "C:\\Users\\Thiago\\AppData\\Local\\Programs\\Python\\Python314\\python.exe",
+        "-m",
+        "pytest",
+        "-p",
+        "no:cacheprovider",
+        "-v",
+        "--tb=short",
+        "--color=no",
+        "--implementacao",
+        "original"
+      ],
+      "exit_code": 1,
+      "log_sha256": "28bb7505c8df332c60f6c179c159f8578098f598543eb19e70dc1da2a63eccd6"
+    },
+    {
+      "implementacao": "corrigida",
+      "comando": [
+        "C:\\Users\\Thiago\\AppData\\Local\\Programs\\Python\\Python314\\python.exe",
+        "-m",
+        "pytest",
+        "-p",
+        "no:cacheprovider",
+        "-v",
+        "--tb=short",
+        "--color=no",
+        "--implementacao",
+        "corrigida"
+      ],
+      "exit_code": 0,
+      "log_sha256": "fef8dbbabb3f032094927388ec92d9331a0279eb81e660037d13d281138f9d1d"
+    }
+  ]
+}

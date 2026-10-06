@@ -1,0 +1,47 @@
+============================= test session starts =============================
+platform win32 -- Python 3.14.5, pytest-9.0.3, pluggy-1.6.0 -- C:\Users\Thiago\AppData\Local\Programs\Python\Python314\python.exe
+rootdir: C:\Users\Thiago\Desktop\provaQA
+configfile: pytest.ini
+testpaths: tests
+plugins: anyio-4.13.0, asyncio-1.3.0
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 36 items
+
+tests/test_desconto.py::test_criterios_de_aceite[C01] PASSED             [  2%]
+tests/test_desconto.py::test_criterios_de_aceite[C02] PASSED             [  5%]
+tests/test_desconto.py::test_criterios_de_aceite[C03] PASSED             [  8%]
+tests/test_desconto.py::test_criterios_de_aceite[C04] PASSED             [ 11%]
+tests/test_desconto.py::test_criterios_de_aceite[C05] PASSED             [ 13%]
+tests/test_desconto.py::test_criterios_de_aceite[C06] PASSED             [ 16%]
+tests/test_desconto.py::test_criterios_de_aceite[C07] PASSED             [ 19%]
+tests/test_desconto.py::test_criterios_de_aceite[C08] PASSED             [ 22%]
+tests/test_desconto.py::test_criterios_de_aceite[C09] PASSED             [ 25%]
+tests/test_desconto.py::test_criterios_de_aceite[C10] PASSED             [ 27%]
+tests/test_desconto.py::test_criterios_de_aceite[C11] PASSED             [ 30%]
+tests/test_desconto.py::test_criterios_de_aceite[C12] PASSED             [ 33%]
+tests/test_desconto.py::test_criterios_de_aceite[C13] PASSED             [ 36%]
+tests/test_desconto.py::test_criterios_de_aceite[C14] PASSED             [ 38%]
+tests/test_desconto.py::test_criterios_de_aceite[C15] PASSED             [ 41%]
+tests/test_desconto.py::test_criterios_de_aceite[C16] PASSED             [ 44%]
+tests/test_desconto.py::test_criterios_de_aceite[C17] PASSED             [ 47%]
+tests/test_desconto.py::test_criterios_de_aceite[C18] PASSED             [ 50%]
+tests/test_desconto.py::test_criterios_de_aceite[C19] PASSED             [ 52%]
+tests/test_desconto.py::test_criterios_de_aceite[C20] PASSED             [ 55%]
+tests/test_desconto.py::test_criterios_de_aceite[C21] PASSED             [ 58%]
+tests/test_desconto.py::test_criterios_de_aceite[C22] PASSED             [ 61%]
+tests/test_desconto.py::test_criterios_de_aceite[C23] PASSED             [ 63%]
+tests/test_desconto.py::test_criterios_de_aceite[C24] PASSED             [ 66%]
+tests/test_desconto.py::test_criterios_de_aceite[C25] PASSED             [ 69%]
+tests/test_desconto.py::test_criterios_de_aceite[C26] PASSED             [ 72%]
+tests/test_desconto.py::test_criterios_de_aceite[C27] PASSED             [ 75%]
+tests/test_desconto.py::test_criterios_de_aceite[C28] PASSED             [ 77%]
+tests/test_desconto.py::test_criterios_de_aceite[C29] PASSED             [ 80%]
+tests/test_desconto.py::test_criterios_de_aceite[C30] PASSED             [ 83%]
+tests/test_desconto.py::test_criterios_de_aceite[C31] PASSED             [ 86%]
+tests/test_desconto.py::test_criterios_de_aceite[C32] PASSED             [ 88%]
+tests/test_desconto.py::test_criterios_de_aceite[C33] PASSED             [ 91%]
+tests/test_desconto.py::test_criterios_de_aceite[C34] PASSED             [ 94%]
+tests/test_desconto.py::test_criterios_de_aceite[C35] PASSED             [ 97%]
+tests/test_desconto.py::test_criterios_de_aceite[C36] PASSED             [100%]
+
+============================= 36 passed in 0.05s ==============================
