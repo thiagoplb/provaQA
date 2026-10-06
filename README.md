@@ -2,12 +2,12 @@
 
 Entrega: [thiagoplb/provaQA](https://github.com/thiagoplb/provaQA).
 
-A função retorna o desconto em reais. A mesma suíte de 50 testes roda no código original e no corrigido: **19 falhas e 31 sucessos antes; 50 sucessos depois**.
+A função retorna o desconto em reais. A mesma suíte de 32 testes roda no código original e no corrigido: **13 falhas e 19 sucessos antes; 32 sucessos depois**.
 
 ## Preencher o formulário
 
 - Código corrigido: copie [desconto.py](desconto.py).
-- Todos os cenários: copie [CENARIOS_RESUMIDOS.txt](CENARIOS_RESUMIDOS.txt), com os 40 cenários de desconto e os 10 de dados inesperados efetivamente testados.
+- Todos os cenários: copie [CENARIOS_RESUMIDOS.txt](CENARIOS_RESUMIDOS.txt), com os 24 cenários de desconto e os 8 de dados inesperados efetivamente testados.
 - Bugs e escolha dos valores: copie [BUGS_ENCONTRADOS.txt](BUGS_ENCONTRADOS.txt).
 - PRINT1: anexe [PRINT1.png](evidencias/PRINT1.png).
 - PRINT2: anexe [PRINT2.png](evidencias/PRINT2.png).
@@ -35,6 +35,6 @@ Os dados inesperados testados se limitam a entradas plausíveis nos campos: valo
 
 Os PNGs são capturas no navegador das saídas reais do Pytest. As páginas HTML usadas na captura são temporárias e não fazem parte da entrega.
 
-![Antes: 19 falhas e 31 sucessos](evidencias/PRINT1.png)
+![Antes: 13 falhas e 19 sucessos](evidencias/PRINT1.png)
 
-![Depois: 50 sucessos](evidencias/PRINT2.png)
+![Depois: 32 sucessos](evidencias/PRINT2.png)

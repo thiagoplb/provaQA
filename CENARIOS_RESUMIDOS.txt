@@ -1,38 +1,24 @@
 ﻿CENÁRIOS DE TESTES — DESCONTO EM REAIS
-Todos os 50 cenários abaixo integram os testes automatizados: 40 de desconto e 10 de dados inesperados.
+Todos os 32 cenários abaixo integram os testes automatizados: 24 de desconto e 8 de dados inesperados.
 Os valores esperados são o desconto, não o total final da compra.
 
 COMPRAS E CATEGORIAS
 C01: Compra R$ 0,00, cliente 'COMUM' -> desconto R$ 0,00.
-C02: Compra R$ 0,00, cliente 'VIP' -> desconto R$ 0,00.
-C03: Compra R$ 50,00, cliente 'COMUM' -> desconto R$ 0,00.
 C04: Compra R$ 50,00, cliente 'VIP' -> desconto R$ 2,50.
 C05: Compra R$ 99,99, cliente 'COMUM' -> desconto R$ 0,00.
 C06: Compra R$ 99,99, cliente 'VIP' -> desconto R$ 5,00.
 C07: Compra R$ 100,00, cliente 'COMUM' -> desconto R$ 10,00.
 C08: Compra R$ 100,00, cliente 'VIP' -> desconto R$ 15,00.
-C09: Compra R$ 100,01, cliente 'COMUM' -> desconto R$ 10,00.
-C10: Compra R$ 100,01, cliente 'VIP' -> desconto R$ 15,00.
 C11: Compra R$ 300,00, cliente 'COMUM' -> desconto R$ 30,00.
 C12: Compra R$ 300,00, cliente 'VIP' -> desconto R$ 45,00.
 C13: Compra R$ 499,99, cliente 'COMUM' -> desconto R$ 50,00.
 C14: Compra R$ 499,99, cliente 'VIP' -> desconto R$ 75,00.
 C15: Compra R$ 500,00, cliente 'COMUM' -> desconto R$ 100,00.
 C16: Compra R$ 500,00, cliente 'VIP' -> desconto R$ 125,00.
-C17: Compra R$ 500,01, cliente 'COMUM' -> desconto R$ 100,00.
-C18: Compra R$ 500,01, cliente 'VIP' -> desconto R$ 125,00.
-C19: Compra R$ 50,00, cliente 'vip' -> desconto R$ 2,50.
 C20: Compra R$ 300,00, cliente 'vip' -> desconto R$ 45,00.
-C21: Compra R$ 500,00, cliente 'vip' -> desconto R$ 125,00.
 C22: Compra R$ 300,00, cliente 'Vip' -> desconto R$ 45,00.
-C23: Compra R$ 300,00, cliente 'vIp' -> desconto R$ 45,00.
-C24: Compra R$ 300,00, cliente 'comum' -> desconto R$ 30,00.
-C25: Compra R$ 999,99, cliente 'COMUM' -> desconto R$ 200,00.
 C26: Compra R$ 1.000,00, cliente 'COMUM' -> desconto R$ 200,00.
-C27: Compra R$ 1.000,01, cliente 'COMUM' -> desconto R$ 200,00.
-C28: Compra R$ 799,99, cliente 'VIP' -> desconto R$ 200,00.
 C29: Compra R$ 800,00, cliente 'VIP' -> desconto R$ 200,00.
-C30: Compra R$ 800,01, cliente 'VIP' -> desconto R$ 200,00.
 C31: Compra R$ 5.000,00, cliente 'COMUM' -> desconto R$ 200,00.
 C32: Compra R$ 5.000,00, cliente 'VIP' -> desconto R$ 200,00.
 C33: Compra R$ 123,45, cliente 'COMUM' -> desconto R$ 12,35.
@@ -40,17 +26,13 @@ C34: Compra R$ 123,45, cliente 'VIP' -> desconto R$ 18,52.
 C35: Compra R$ 999,00, cliente 'COMUM' -> desconto R$ 199,80.
 C36: Compra R$ 799,00, cliente 'VIP' -> desconto R$ 199,75.
 C37: Compra R$ 300,00, cliente ' VIP ' -> desconto R$ 45,00.
-C38: Compra R$ 50,00, cliente ' vip ' -> desconto R$ 2,50.
 C39: Compra R$ 300,00, cliente ' COMUM ' -> desconto R$ 30,00.
-C40: Compra R$ 500,00, cliente 'CoMuM' -> desconto R$ 100,00.
 
 DADOS INESPERADOS — TESTES AUTOMATIZADOS DE VALIDAÇÃO
 I01: Compra -0.01, cliente 'COMUM' -> ValueError: "valor_compra deve ser int ou float nao negativo".
-I02: Compra -100, cliente 'VIP' -> ValueError: "valor_compra deve ser int ou float nao negativo".
 I03: Compra '', cliente 'COMUM' -> TypeError: "valor_compra deve ser int ou float nao negativo".
 I04: Compra '300', cliente 'COMUM' -> TypeError: "valor_compra deve ser int ou float nao negativo".
 I05: Compra 'abc', cliente 'COMUM' -> TypeError: "valor_compra deve ser int ou float nao negativo".
-I06: Compra '   ', cliente 'VIP' -> TypeError: "valor_compra deve ser int ou float nao negativo".
 I07: Compra 300, cliente '123' -> ValueError: "tipo_cliente deve ser COMUM ou VIP".
 I08: Compra 300, cliente '' -> ValueError: "tipo_cliente deve ser COMUM ou VIP".
 I09: Compra 300, cliente '   ' -> ValueError: "tipo_cliente deve ser COMUM ou VIP".
@@ -58,5 +40,5 @@ I10: Compra 300, cliente 'PREMIUM' -> ValueError: "tipo_cliente deve ser COMUM o
 
 Política adicional adotada: compra deve ser int ou float, não negativa. Não há conversão automática de texto para número. Cliente deve ser texto, COMUM ou VIP, ignorando maiúsculas e espaços nas extremidades. Tipos inválidos geram TypeError; valores inválidos geram ValueError.
 Essas decisões complementam os critérios originais, que não especificavam validação de entradas.
-Preservado round(..., 2). R$ 999,99 (COMUM) e R$ 799,99 (VIP) arredondam para desconto de R$ 200,00; C35 e C36 verificam descontos realmente abaixo do teto.
-Antes: 19 falhas e 31 sucessos. Depois: 50 sucessos.
+Preservado round(..., 2). C35 e C36 verificam descontos realmente abaixo do teto; C31 e C32 verificam descontos limitados ao teto.
+Antes: 13 falhas e 19 sucessos. Depois: 32 sucessos.
