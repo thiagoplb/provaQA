@@ -60,11 +60,12 @@ Foi preservado o arredondamento com `round(valor_desconto, 2)` do codigo origina
 
 ## Publicacao no GitHub
 
-O projeto foi preparado como repositorio Git local. A publicacao exige a URL do repositorio de destino e autenticacao com permissao de escrita. Depois de definir esse destino, use:
+Repositorio: [thiagoplb/provaQA](https://github.com/thiagoplb/provaQA), branch `main`.
+
+Para publicar novas alteracoes depois de criar um commit local:
 
 ```powershell
-git remote add origin URL_DO_REPOSITORIO
-git push -u origin main
+git push origin main
 ```
 
 ## Texto para a entrega
