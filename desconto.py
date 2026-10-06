@@ -1,5 +1,5 @@
 def calcular_desconto(valor_compra, tipo_cliente):
-    if isinstance(valor_compra, bool) or not isinstance(valor_compra, (int, float)):
+    if not isinstance(valor_compra, (int, float)):
         raise TypeError("valor_compra deve ser int ou float")
     if valor_compra < 0:
         raise ValueError("valor_compra deve ser nao negativo")

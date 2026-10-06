@@ -57,22 +57,14 @@ def test_criterios_de_aceite(calcular_desconto, cenario, valor_compra, tipo_clie
 CASOS_INVALIDOS = [
     ("I01", -0.01, "COMUM", ValueError, "valor_compra deve ser nao negativo"),
     ("I02", -100, "VIP", ValueError, "valor_compra deve ser nao negativo"),
-    ("I03", None, "COMUM", TypeError, "valor_compra deve ser int ou float"),
+    ("I03", "", "COMUM", TypeError, "valor_compra deve ser int ou float"),
     ("I04", "300", "COMUM", TypeError, "valor_compra deve ser int ou float"),
     ("I05", "abc", "COMUM", TypeError, "valor_compra deve ser int ou float"),
-    ("I06", True, "COMUM", TypeError, "valor_compra deve ser int ou float"),
-    ("I07", False, "VIP", TypeError, "valor_compra deve ser int ou float"),
-    ("I08", [], "COMUM", TypeError, "valor_compra deve ser int ou float"),
-    ("I09", {}, "COMUM", TypeError, "valor_compra deve ser int ou float"),
-    ("I10", 300 + 1j, "COMUM", TypeError, "valor_compra deve ser int ou float"),
-    ("I11", 300, None, TypeError, "tipo_cliente deve ser texto"),
-    ("I12", 300, 123, TypeError, "tipo_cliente deve ser texto"),
-    ("I13", 300, True, TypeError, "tipo_cliente deve ser texto"),
-    ("I14", 300, [], TypeError, "tipo_cliente deve ser texto"),
-    ("I15", 300, {}, TypeError, "tipo_cliente deve ser texto"),
-    ("I16", 300, "", ValueError, "tipo_cliente deve ser COMUM ou VIP"),
-    ("I17", 300, "   ", ValueError, "tipo_cliente deve ser COMUM ou VIP"),
-    ("I18", 300, "PREMIUM", ValueError, "tipo_cliente deve ser COMUM ou VIP"),
+    ("I06", "   ", "VIP", TypeError, "valor_compra deve ser int ou float"),
+    ("I07", 300, "123", ValueError, "tipo_cliente deve ser COMUM ou VIP"),
+    ("I08", 300, "", ValueError, "tipo_cliente deve ser COMUM ou VIP"),
+    ("I09", 300, "   ", ValueError, "tipo_cliente deve ser COMUM ou VIP"),
+    ("I10", 300, "PREMIUM", ValueError, "tipo_cliente deve ser COMUM ou VIP"),
 ]
 
 

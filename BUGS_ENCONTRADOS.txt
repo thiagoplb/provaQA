@@ -8,9 +8,9 @@ Os testes com R$ 99,99, R$ 100,00 e R$ 100,01, para ambas as categorias, verific
 A comparação literal com "VIP" ignorava "vip", "Vip" e "vIp". R$ 300 com "vip" recebia R$ 30, em vez de R$ 45. A categoria passou a ser normalizada para maiúsculas. Testar variações de escrita abaixo de R$ 100, na faixa de 10% e na faixa de 20% confirma o adicional em todas as faixas.
 
 3. Ausência de validação para dados inesperados.
-Os critérios originais não definiam esses dados. Para os testes de robustez, foi adotada uma política explícita: aceitar somente compras int/float, não negativas, rejeitar booleanos e não converter textos automaticamente; aceitar somente COMUM e VIP em texto, normalizando maiúsculas e espaços nas extremidades.
-O código original podia retornar desconto negativo para compra negativa VIP, aceitar booleanos como números, tratar categorias ausentes ou desconhecidas como comuns. Algumas entradas já provocavam TypeError incidental, mas sem validação explícita nem a mensagem definida pela política. Os testes verificam a classe da exceção e a mensagem correspondente.
-Foram testados valores negativos, None, textos numéricos e não numéricos, True/False, listas, dicionários, número complexo, categoria vazia, só espaços e categoria desconhecida.
+Os critérios originais não definiam esses dados. Para os testes de robustez, foi adotada uma política explícita: aceitar somente compras int/float, não negativas e não converter textos automaticamente; aceitar somente COMUM e VIP em texto, normalizando maiúsculas e espaços nas extremidades.
+O código original podia retornar desconto negativo para compra negativa VIP, tratar categorias vazias ou desconhecidas como comuns. Algumas entradas já provocavam TypeError incidental, mas sem validação explícita nem a mensagem definida pela política. Os testes verificam a classe da exceção e a mensagem correspondente.
+Foram testadas entradas plausíveis nos campos: valores negativos, valor da compra vazio ou só com espaços, textos numéricos e não numéricos no valor da compra, categoria escrita como número, categoria vazia, só com espaços e categoria desconhecida. A função recebe o valor da compra já como número; a conversão de texto digitado em um formulário pertence à interface e não é feita por esta função.
 Essas validações são decisões adicionais de robustez, não regras originalmente descritas pelo PO.
 
 4. Espaços nas extremidades da categoria.
@@ -20,7 +20,7 @@ Pela política adicional adotada, " VIP " e " vip " devem receber o adicional VI
 R$ 499,99, R$ 500,00 e R$ 500,01 verificam a transição para 20%. R$ 800 para VIP e R$ 1.000 para COMUM atingem exatamente o teto; valores um centavo abaixo e acima verificam as proximidades. R$ 799 (VIP) e R$ 999 (COMUM) geram descontos efetivamente inferiores ao teto, evitando que o arredondamento esconda diferenças. R$ 5.000 verifica a limitação nas duas categorias. R$ 123,45 verifica duas casas decimais. Compra zero e R$ 50 verificam ausência de desconto base e adicional VIP independente da faixa.
 
 RESULTADO
-A mesma suíte contém 58 testes: 40 cenários de desconto e 18 de dados inesperados.
-Código original: 27 falhas e 31 sucessos.
-Código corrigido: 58 sucessos.
-As 27 falhas incluem as 7 dos critérios originais, 2 por espaços na categoria VIP e 18 pela política adicional de validação.
+A mesma suíte contém 50 testes: 40 cenários de desconto e 10 de dados inesperados.
+Código original: 19 falhas e 31 sucessos.
+Código corrigido: 50 sucessos.
+As 19 falhas incluem as 7 dos critérios originais, 2 por espaços na categoria VIP e 10 pela política adicional de validação.
