@@ -45,12 +45,12 @@ C39: Compra R$ 300,00, cliente ' COMUM ' -> desconto R$ 30,00.
 C40: Compra R$ 500,00, cliente 'CoMuM' -> desconto R$ 100,00.
 
 DADOS INESPERADOS — TESTES AUTOMATIZADOS DE VALIDAÇÃO
-I01: Compra -0.01, cliente 'COMUM' -> ValueError: "valor_compra deve ser nao negativo".
-I02: Compra -100, cliente 'VIP' -> ValueError: "valor_compra deve ser nao negativo".
-I03: Compra '', cliente 'COMUM' -> TypeError: "valor_compra deve ser int ou float".
-I04: Compra '300', cliente 'COMUM' -> TypeError: "valor_compra deve ser int ou float".
-I05: Compra 'abc', cliente 'COMUM' -> TypeError: "valor_compra deve ser int ou float".
-I06: Compra '   ', cliente 'VIP' -> TypeError: "valor_compra deve ser int ou float".
+I01: Compra -0.01, cliente 'COMUM' -> ValueError: "valor_compra deve ser int ou float nao negativo".
+I02: Compra -100, cliente 'VIP' -> ValueError: "valor_compra deve ser int ou float nao negativo".
+I03: Compra '', cliente 'COMUM' -> TypeError: "valor_compra deve ser int ou float nao negativo".
+I04: Compra '300', cliente 'COMUM' -> TypeError: "valor_compra deve ser int ou float nao negativo".
+I05: Compra 'abc', cliente 'COMUM' -> TypeError: "valor_compra deve ser int ou float nao negativo".
+I06: Compra '   ', cliente 'VIP' -> TypeError: "valor_compra deve ser int ou float nao negativo".
 I07: Compra 300, cliente '123' -> ValueError: "tipo_cliente deve ser COMUM ou VIP".
 I08: Compra 300, cliente '' -> ValueError: "tipo_cliente deve ser COMUM ou VIP".
 I09: Compra 300, cliente '   ' -> ValueError: "tipo_cliente deve ser COMUM ou VIP".

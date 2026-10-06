@@ -55,12 +55,12 @@ def test_criterios_de_aceite(calcular_desconto, cenario, valor_compra, tipo_clie
 
 # Validacoes adicionais adotadas para dados inesperados.
 CASOS_INVALIDOS = [
-    ("I01", -0.01, "COMUM", ValueError, "valor_compra deve ser nao negativo"),
-    ("I02", -100, "VIP", ValueError, "valor_compra deve ser nao negativo"),
-    ("I03", "", "COMUM", TypeError, "valor_compra deve ser int ou float"),
-    ("I04", "300", "COMUM", TypeError, "valor_compra deve ser int ou float"),
-    ("I05", "abc", "COMUM", TypeError, "valor_compra deve ser int ou float"),
-    ("I06", "   ", "VIP", TypeError, "valor_compra deve ser int ou float"),
+    ("I01", -0.01, "COMUM", ValueError, "valor_compra deve ser int ou float nao negativo"),
+    ("I02", -100, "VIP", ValueError, "valor_compra deve ser int ou float nao negativo"),
+    ("I03", "", "COMUM", TypeError, "valor_compra deve ser int ou float nao negativo"),
+    ("I04", "300", "COMUM", TypeError, "valor_compra deve ser int ou float nao negativo"),
+    ("I05", "abc", "COMUM", TypeError, "valor_compra deve ser int ou float nao negativo"),
+    ("I06", "   ", "VIP", TypeError, "valor_compra deve ser int ou float nao negativo"),
     ("I07", 300, "123", ValueError, "tipo_cliente deve ser COMUM ou VIP"),
     ("I08", 300, "", ValueError, "tipo_cliente deve ser COMUM ou VIP"),
     ("I09", 300, "   ", ValueError, "tipo_cliente deve ser COMUM ou VIP"),
