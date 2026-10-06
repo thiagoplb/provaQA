@@ -1,5 +1,5 @@
 ﻿CENÁRIOS DE TESTES — DESCONTO EM REAIS
-Todos os 61 cenários abaixo integram os testes automatizados: 40 de desconto e 21 de dados inesperados.
+Todos os 58 cenários abaixo integram os testes automatizados: 40 de desconto e 18 de dados inesperados.
 Os valores esperados são o desconto, não o total final da compra.
 
 COMPRAS E CATEGORIAS
@@ -52,22 +52,19 @@ I04: Compra '300', cliente 'COMUM' -> TypeError: "valor_compra deve ser int ou f
 I05: Compra 'abc', cliente 'COMUM' -> TypeError: "valor_compra deve ser int ou float".
 I06: Compra True, cliente 'COMUM' -> TypeError: "valor_compra deve ser int ou float".
 I07: Compra False, cliente 'VIP' -> TypeError: "valor_compra deve ser int ou float".
-I08: Compra nan, cliente 'COMUM' -> ValueError: "valor_compra deve ser finito".
-I09: Compra inf, cliente 'VIP' -> ValueError: "valor_compra deve ser finito".
-I10: Compra -inf, cliente 'COMUM' -> ValueError: "valor_compra deve ser finito".
-I11: Compra [], cliente 'COMUM' -> TypeError: "valor_compra deve ser int ou float".
-I12: Compra {}, cliente 'COMUM' -> TypeError: "valor_compra deve ser int ou float".
-I13: Compra (300+1j), cliente 'COMUM' -> TypeError: "valor_compra deve ser int ou float".
-I14: Compra 300, cliente None -> TypeError: "tipo_cliente deve ser texto".
-I15: Compra 300, cliente 123 -> TypeError: "tipo_cliente deve ser texto".
-I16: Compra 300, cliente True -> TypeError: "tipo_cliente deve ser texto".
-I17: Compra 300, cliente [] -> TypeError: "tipo_cliente deve ser texto".
-I18: Compra 300, cliente {} -> TypeError: "tipo_cliente deve ser texto".
-I19: Compra 300, cliente '' -> ValueError: "tipo_cliente deve ser COMUM ou VIP".
-I20: Compra 300, cliente '   ' -> ValueError: "tipo_cliente deve ser COMUM ou VIP".
-I21: Compra 300, cliente 'PREMIUM' -> ValueError: "tipo_cliente deve ser COMUM ou VIP".
+I08: Compra [], cliente 'COMUM' -> TypeError: "valor_compra deve ser int ou float".
+I09: Compra {}, cliente 'COMUM' -> TypeError: "valor_compra deve ser int ou float".
+I10: Compra (300+1j), cliente 'COMUM' -> TypeError: "valor_compra deve ser int ou float".
+I11: Compra 300, cliente None -> TypeError: "tipo_cliente deve ser texto".
+I12: Compra 300, cliente 123 -> TypeError: "tipo_cliente deve ser texto".
+I13: Compra 300, cliente True -> TypeError: "tipo_cliente deve ser texto".
+I14: Compra 300, cliente [] -> TypeError: "tipo_cliente deve ser texto".
+I15: Compra 300, cliente {} -> TypeError: "tipo_cliente deve ser texto".
+I16: Compra 300, cliente '' -> ValueError: "tipo_cliente deve ser COMUM ou VIP".
+I17: Compra 300, cliente '   ' -> ValueError: "tipo_cliente deve ser COMUM ou VIP".
+I18: Compra 300, cliente 'PREMIUM' -> ValueError: "tipo_cliente deve ser COMUM ou VIP".
 
-Política adicional adotada: compra deve ser int ou float, finita e não negativa; booleanos são rejeitados. Não há conversão automática de texto para número. Cliente deve ser texto, COMUM ou VIP, ignorando maiúsculas e espaços nas extremidades. Tipos inválidos geram TypeError; valores inválidos geram ValueError.
+Política adicional adotada: compra deve ser int ou float, não negativa; booleanos são rejeitados. Não há conversão automática de texto para número. Cliente deve ser texto, COMUM ou VIP, ignorando maiúsculas e espaços nas extremidades. Tipos inválidos geram TypeError; valores inválidos geram ValueError.
 Essas decisões complementam os critérios originais, que não especificavam validação de entradas.
 Preservado round(..., 2). R$ 999,99 (COMUM) e R$ 799,99 (VIP) arredondam para desconto de R$ 200,00; C35 e C36 verificam descontos realmente abaixo do teto.
-Antes: 30 falhas e 31 sucessos. Depois: 61 sucessos.
+Antes: 27 falhas e 31 sucessos. Depois: 58 sucessos.

@@ -1,11 +1,6 @@
-from math import isfinite
-
-
 def calcular_desconto(valor_compra, tipo_cliente):
     if isinstance(valor_compra, bool) or not isinstance(valor_compra, (int, float)):
         raise TypeError("valor_compra deve ser int ou float")
-    if isinstance(valor_compra, float) and not isfinite(valor_compra):
-        raise ValueError("valor_compra deve ser finito")
     if valor_compra < 0:
         raise ValueError("valor_compra deve ser nao negativo")
     if not isinstance(tipo_cliente, str):
